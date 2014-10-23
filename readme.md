@@ -5,7 +5,7 @@ Version `0.0.1`
 - Keep your JS and CSS in sync at all times.
 - Keep your breakpoint declarations out of your JS. Keep style rules in the style-sheet.
 - Selectively toggle JS functionality using omitted events `viewport:small`, `viewport:medium`, `viewport:large`, `viewport:xlarge`. 
-- Also has `viewport:not:*` triggers.
+- Also has `viewport:not:*` events.
 
 ```js
 $( window )

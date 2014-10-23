@@ -30,7 +30,7 @@ var rjs = {
 
 		this.elm.append( this.target );
 
-		that.pushTriggers();
+		this.pushTriggers();
 
 		this.$window.resize(function() {
 			that.pushTriggers();

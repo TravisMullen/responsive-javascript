@@ -2,9 +2,19 @@
 
 Version `0.0.1`
 
-- Keep you JS and CSS in sync at all times.
-- Keep you breakpoint declarations out of your JS. Keep style rules in the style-sheet.
+- Keep your JS and CSS in sync at all times.
+- Keep your breakpoint declarations out of your JS. Keep style rules in the style-sheet.
 - Selectively toggle JS functionality using omitted events `viewport:small`,`viewport:medium`,`viewport:large`,`viewport:xlarge`.
+
+```js
+$( window )
+	.on('viewport:small', function() {
+			// do something to the small viewport
+		})
+	.on('viewport:not:small', function() {
+			// do something to the medium and larger viewports
+		});
+```
 
 Use CSS or SCSS variables to set JS breakpoints. Set-up listeners to activate/deactivate JS modules, shiv JS styles, or whatever you need and have JS and CSS always stay in sync.
 

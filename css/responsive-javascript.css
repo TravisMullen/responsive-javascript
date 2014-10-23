@@ -1,0 +1,33 @@
+/* ==================================================
+// breakpoints for `responsive-javascript.js`
+// ================================================*/
+
+@media only screen {
+	#responsive-javascript {
+		border-style: dashed;
+	}
+}
+
+@media only screen and (min-width: 40em) {
+	#responsive-javascript {
+		border-style: dotted;
+	}
+}
+
+@media only screen and (min-width: 64em) {
+	#responsive-javascript {
+		border-style: double;
+	}
+}
+
+@media only screen and (min-width: 90em) {
+	#responsive-javascript {
+		border-style: groove;
+	}
+}
+
+@media only screen and (min-width: 120em) {
+	#responsive-javascript {
+		border-style: inset;
+	}
+}

@@ -17,7 +17,6 @@ var rjs = {
 		tiggerPrefix: "viewport"
 	},
 
-	// vp: $.noop,
 	$window: $( window ),
 
 	init: function( config ) {
@@ -71,8 +70,6 @@ var rjs = {
 		};
 	}
 };
-
-
 
 
 // rjs.init(); // has to load after modules dependent on it

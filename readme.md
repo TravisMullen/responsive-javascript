@@ -19,7 +19,7 @@ $( window ) // listen to events on $(window)
 
 Use CSS or SCSS variables to set JS breakpoints. Set-up listeners to activate/deactivate JS modules, shiv JS styles, or whatever you need. JS and CSS always stay in sync.
 
-_Requires jQuery (or similar library for selectors), provided `.css` and `.js` for use._
+_Requires jQuery (or similar library for selectors and `.trigger`), provided `.css` and `.js` for use._
 
 Gotcha: Load `responsive-javascript.js` library or initiate `rjs.init();` after trigger `.on('viewport:*')` dependencies have been declared. 
 

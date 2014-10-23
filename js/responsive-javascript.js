@@ -51,7 +51,7 @@ var rjs = {
 			exc = [],
 			view;
 		for (view in ports) {
-		    if (viewport != ports[view]) {
+		    if (viewport !== ports[view]) {
 		    	exc.push( view );
 		    }
 		}

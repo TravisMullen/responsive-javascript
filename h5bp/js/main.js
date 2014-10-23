@@ -3,8 +3,8 @@ $( window )
 		'viewport:small',
 		function() {
 			console.log( 'viewport:small' );
-			$('h1')
-				.text('small screen detected by javascript!');
+			$('p')
+				.text('The SMALL screen has been detected by CSS and the DOM has been updated by javascript!');
 			$('h2')
 				.text('small')
 				.css('border','1px solid purple');
@@ -37,6 +37,6 @@ $( window )
 		'viewport:not:small',
 		function() {
 			console.log( 'viewport:not:small' );
-			$('h1')
-				.text('medium and larger screen detected by javascript!');
+			$('p')
+				.text('The MEDIUM and larger screen has been detected by CSS and the DOM has been updated by javascript!');
 		});

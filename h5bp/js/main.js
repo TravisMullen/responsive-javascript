@@ -4,8 +4,7 @@ $( window )
 		function() {
 			console.log( 'viewport:small' );
 			$('h1')
-				.text('small screen detected by javascript!')
-				.css('background-color','yellow');
+				.text('small screen detected by javascript!');
 			$('h2')
 				.text('small')
 				.css('border','1px solid purple');
@@ -39,6 +38,5 @@ $( window )
 		function() {
 			console.log( 'viewport:not:small' );
 			$('h1')
-				.text('medium and larger screen detected by javascript!')
-				.css('background-color','yellow');
+				.text('medium and larger screen detected by javascript!');
 		});

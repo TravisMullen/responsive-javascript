@@ -23,9 +23,9 @@ _Requires jQuery (or similar library for selectors), provided `.css` and `.js` f
 
 Gotcha: Load `responsive-javascript.js` library or initiate `rjs.init();` after trigger `.on('viewport:*')` dependencies have been declared. 
 
-Provided as both `.css` and `.scss`.
+Provided style dependencies as both `.css` and `.scss`.
 
-See `h5bp/main.js` for example of use.
+See `h5bp/js/main.js` for example of use.
 
 
 

@@ -20,7 +20,7 @@ Use CSS or SCSS variables to set JS breakpoints. Set-up listeners to activate/de
 
 _Requires jQuery (or similar library for selectors), provided `.css` and `.js` for use._
 
-Gotcha: Load `responsive-javascript.js` library or initiate `rjs.init();` after trigger (`.on();`)dependencies have been declared. 
+Gotcha: Load `responsive-javascript.js` library or initiate `rjs.init();` after trigger `.on('viewport:*')` dependencies have been declared. 
 
 Provided as both `.css` and `.scss`.
 

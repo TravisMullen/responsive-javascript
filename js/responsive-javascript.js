@@ -24,8 +24,8 @@ var rjs = {
 		this.elm = $("body"); // attach to body
 
 		this.target = $( "<div />" , {
-			id: this.config.name,
-			style: "display:none;"
+			'class': this.config.name,
+			'style': "display:none;"
 		});
 
 		this.elm.append( this.target );

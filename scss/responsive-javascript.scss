@@ -14,19 +14,19 @@ $large-up: "#{$screen} and (min-width:#{$large})";
 
 
 @media #{$small-up} {
-	#responsive-javascript {
+	.responsive-javascript {
 		border-style: dashed;
 	}
 }
 
 @media #{$medium-up} {
-	#responsive-javascript {
+	.responsive-javascript {
 		border-style: dotted;
 	}
 }
 
 @media #{$large-up} {
-	#responsive-javascript {
+	.responsive-javascript {
 		border-style: double;
 	}
 }

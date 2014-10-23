@@ -12,7 +12,7 @@ var rjs = {
 			medium: "dotted",
 			large: "double"
 		},
-		triggerPrefix: "viewport"
+		prefix: "viewport"
 	},
 
 	$window: $( window ),
@@ -61,10 +61,10 @@ var rjs = {
 			excs = this.findViewExclusions( value );
 
 		// for angularjs use `scope.$emit`
-		this.$window.trigger( this.config.triggerPrefix + ":" + vp );
+		this.$window.trigger( this.config.prefix + ":" + vp );
 
 		for (var i = excs.length - 1; i >= 0; i--) {
-			this.$window.trigger( this.config.triggerPrefix + ":not:" + excs[i] );
+			this.$window.trigger( this.config.prefix + ":not:" + excs[i] );
 		};
 	}
 };

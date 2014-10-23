@@ -8,7 +8,7 @@ Version `0.0.1`
 - Also has `viewport:not:*` events.
 
 ```js
-$( window )
+$( window ) // listen to events on $(window)
 	.on('viewport:small', function() {
 			// do something to the small viewport
 		})

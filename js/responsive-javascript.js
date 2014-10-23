@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 
 var rjs = {
 
@@ -17,7 +17,7 @@ var rjs = {
 
 	$window: $( window ),
 
-	init: function( config ) {
+	init: function() {
 		var that = this;
 
 		// this.elm = $("[" + this.config.name + "]"); // attach to attrib
@@ -38,7 +38,8 @@ var rjs = {
 
 	},
 	findViewPort: function( viewport ) {
-		var ports = this.config.breakpoints;
+		var ports = this.config.breakpoints,
+			view;
 		for (view in ports) {
 		    if (viewport === ports[view]) {
 		    	return view;
@@ -47,7 +48,8 @@ var rjs = {
 	},
 	findViewExclusions: function( viewport ) {
 		var ports = this.config.breakpoints,
-			exc = [];
+			exc = [],
+			view;
 		for (view in ports) {
 		    if (viewport != ports[view]) {
 		    	exc.push( view );
@@ -68,7 +70,6 @@ var rjs = {
 		};
 	}
 };
-
 
 // rjs.init(); // has to load after modules dependent on it
 

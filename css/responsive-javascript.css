@@ -19,15 +19,3 @@
 		border-style: double;
 	}
 }
-
-@media only screen and (min-width: 90em) {
-	#responsive-javascript {
-		border-style: groove;
-	}
-}
-
-@media only screen and (min-width: 120em) {
-	#responsive-javascript {
-		border-style: inset;
-	}
-}

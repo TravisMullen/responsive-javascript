@@ -4,15 +4,13 @@ var rjs = {
 
 	version: "0.0.1",
 
-
 	config: {
 		name: "responsive-javascript",
 		attribTarget: "borderStyle",
-		viewports: {
+		breakpoints: {
 			small: "dashed",
 			medium: "dotted",
-			large: "double",
-			xlarge: "groove"
+			large: "double"
 		},
 		tiggerPrefix: "viewport"
 	},
@@ -40,7 +38,7 @@ var rjs = {
 
 	},
 	findViewPort: function( viewport ) {
-		var ports = this.config.viewports;
+		var ports = this.config.breakpoints;
 		for (view in ports) {
 		    if (viewport === ports[view]) {
 		    	return view;
@@ -48,7 +46,7 @@ var rjs = {
 		}
 	},
 	findViewExclusions: function( viewport ) {
-		var ports = this.config.viewports,
+		var ports = this.config.breakpoints,
 			exc = [];
 		for (view in ports) {
 		    if (viewport != ports[view]) {

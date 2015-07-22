@@ -2,75 +2,89 @@
 
 var rjs = {
 
-	version: "0.0.1",
+    version: "0.0.1",
 
-	config: {
-		name: "responsive-javascript",
-		attribTarget: "borderStyle",
-		breakpoints: {
-			small: "dashed",
-			medium: "dotted",
-			large: "double"
-		},
-		prefix: "viewport"
-	},
+    config: {
+        name: "responsive-javascript",
+        attribTarget: "borderStyle",
+        breakpoints: {
+            small: "dashed",
+            medium: "dotted",
+            large: "double"
+        },
+        prefix: "viewport"
+    },
 
-	$window: $( window ),
+    $window: $( window ),
 
-	init: function() {
-		var that = this;
+    init: function() {
+        var that = this,
+            push;
 
-		// this.elm = $("[" + this.config.name + "]"); // attach to attrib
-		this.elm = $("body"); // attach to body
+        // this.elm = $("[" + this.config.name + "]"); // attach to attrib
+        this.elm = $( 'body' ); // attach to body
 
-		this.target = $( "<div />" , {
-			'class': this.config.name,
-			'style': "display:none;"
-		});
+        this.target = $( '<div />' , {
+            'class': this.config.name,
+            'style': "display:none;"
+        });
 
-		this.elm.append( this.target );
+        this.elm.append( this.target );
 
-		this.pushTriggers();
+        this.pushTriggers();
+        
+        push = _.debounce( function() {
+            that.pushTriggers();
+        }, 30);
 
-		this.$window.resize(function() {
-			that.pushTriggers();
-		});
+        this.$window.on( 'resize' , push );
 
-	},
-	findViewPort: function( viewport ) {
-		var ports = this.config.breakpoints,
-			view;
-		for (view in ports) {
-		    if (viewport === ports[view]) {
-		    	return view;
-		    }
-		}
-	},
-	findViewExclusions: function( viewport ) {
-		var ports = this.config.breakpoints,
-			exc = [],
-			view;
-		for (view in ports) {
-		    if (viewport !== ports[view]) {
-		    	exc.push( view );
-		    }
-		}
-		return exc;
-	},
-	pushTriggers: function() {
-		var value = this.target.css( this.config.attribTarget ),
-			vp = this.findViewPort( value ),
-			excs = this.findViewExclusions( value );
+    },
+    findViewPort: function( viewport ) {
+        var ports = this.config.breakpoints,
+            view;
+        for (view in ports) {
+            if (viewport === ports[view]) {
+                return view;
+            }
+        }
+    },
+    findViewExclusions: function( viewport ) {
+        var ports = this.config.breakpoints,
+            exc = [],
+            view;
+        for (view in ports) {
+            if (viewport !== ports[view]) {
+                exc.push( view );
+            }
+        }
+        return exc;
+    },
+    pushTriggers: function() {
+        var value = this.target.css( this.config.attribTarget ),
+            vp = this.findViewPort( value ),
+            excs = this.findViewExclusions( value );
 
-		// for angularjs use `scope.$emit`
-		this.$window.trigger( this.config.prefix + ":" + vp );
+        // for angularjs use `scope.$emit`
+        this.$window.trigger( this.config.prefix + ":" + vp );
+        console.log("vp",vp);
 
-		for (var i = excs.length - 1; i >= 0; i--) {
-			this.$window.trigger( this.config.prefix + ":not:" + excs[i] );
-		};
-	}
+        this.viewport = vp; // add to namespace
+
+        for (var i = excs.length - 1; i >= 0; i--) {
+            this.$window.trigger( this.config.prefix + ":not:" + excs[i] );
+        };
+    },
+    isSmall: function() {
+        return this.viewport === 'small';
+    },
+    isMedium: function() {
+        return this.viewport === 'medium';
+    },
+    isLarge: function() {
+        return this.viewport === 'large';
+    }
 };
 
 // rjs.init(); // has to load after modules dependent on it
-
 

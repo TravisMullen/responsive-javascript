@@ -33,6 +33,11 @@ var rjs = {
 
         this.pushTriggers();
         
+        // ** requires 
+        // https://lodash.com/docs#debounce
+        // or
+        // http://underscorejs.org/#debounce
+        
         push = _.debounce( function() {
             that.pushTriggers();
         }, 30);

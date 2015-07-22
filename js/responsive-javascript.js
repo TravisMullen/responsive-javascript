@@ -37,7 +37,7 @@ var rjs = {
         // https://lodash.com/docs#debounce
         // or
         // http://underscorejs.org/#debounce
-        
+
         push = _.debounce( function() {
             that.pushTriggers();
         }, 30);
@@ -71,13 +71,12 @@ var rjs = {
             excs = this.findViewExclusions( value );
 
         // for angularjs use `scope.$emit`
-        this.$window.trigger( this.config.prefix + ":" + vp );
-        console.log("vp",vp);
+        this.$window.trigger( this.config.prefix + ':' + vp );
 
         this.viewport = vp; // add to namespace
 
         for (var i = excs.length - 1; i >= 0; i--) {
-            this.$window.trigger( this.config.prefix + ":not:" + excs[i] );
+            this.$window.trigger( this.config.prefix + ':not:' + excs[i] );
         };
     },
     isSmall: function() {

@@ -1,9 +1,11 @@
 "use strict";
 
 // ** requires 
-// https://lodash.com/docs#debounce
+// https://lodash.com/
 // or
-// http://underscorejs.org/#debounce
+// http://underscorejs.org/
+// and 
+// https://jquery.com/
 
 var rjs = {
 

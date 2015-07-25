@@ -40,3 +40,4 @@ $( window )
 			$('p')
 				.text('The MEDIUM and larger screen has been detected by CSS and the DOM has been updated by javascript!');
 		});
+

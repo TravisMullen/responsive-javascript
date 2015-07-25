@@ -10,37 +10,41 @@ Version `1.0.1`
 
 ```js
 $( window ) // listen to events on $(window)
-	.on('viewport:small', function() {
-			// do something to the small viewport
-		})
-	.on('viewport:not:small', function() {
-			// do something to the medium and larger viewports
-		});
+    .on('viewport:small', function() {
+            // do something to the small viewport
+        })
+    .on('viewport:not:small', function() {
+            // do something to the medium and larger viewports
+        });
 ```
 
 To continuously listen for a `resize` event within a viewport use `viewport:*:resize`. This will be throttled by the [_.debounce](https://lodash.com/docs#debounce) specified in the config. 
 
 ```js
 $( window )
-	.on('viewport:small:resize', function() {
-			// do something on every resize event to the small viewport
-		})
-	.on('viewport:not:small:resize', function() {
-			// do something on every resize event to the medium and larger viewports
-		});
+    .on('viewport:small:resize', function() {
+            // do something on every resize event to the small viewport
+        })
+    .on('viewport:not:small:resize', function() {
+            // do something on every resize event to the medium and larger viewports
+        });
 ```
 
 Use CSS or SCSS variables to set JS breakpoints. Set-up listeners to activate/deactivate JS modules, shiv JS styles, or whatever you need. JS and CSS always stay in sync.
 
 ##Utility Functions 
+
+Call off `rsj` namespace once instantiated.
 ```js
-$( window )
-	.on('viewport:small:resize', function() {
-			// do something on every resize event to the small viewport
-		})
-	.on('viewport:not:small:resize', function() {
-			// do something on every resize event to the medium and larger viewports
-		});
+if ( rjs.isSmall() ) {
+    // do something for small 
+}
+if ( rjs.isMedium() ) {
+    // do something for medium
+}
+if ( rjs.isLarge() ) {
+    // do something for large
+}
 ```
 
 ## Initiate and Config Options
@@ -48,12 +52,12 @@ $( window )
 
 Just call `init()` function and its ready to go!
 ```js
-	rjs.init();
+    rjs.init();
 ```
 
 Pass in number to change [_.debounce](https://lodash.com/docs#debounce) timeout
 ```js
-	rjs.init( 100 );
+    rjs.init( 100 );
 ```
 
 Pass in object to change master config. Be sure to update CSS targets accordingly. 

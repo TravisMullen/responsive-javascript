@@ -118,5 +118,5 @@ var rjs = {
     }
 };
 
-// rjs.init(); // has to load after modules dependent on it
+// rjs.init(); // and go!
 

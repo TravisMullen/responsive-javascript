@@ -32,21 +32,6 @@ $( window )
 
 Use CSS or SCSS variables to set JS breakpoints. Set-up listeners to activate/deactivate JS modules, shiv JS styles, or whatever you need. JS and CSS always stay in sync.
 
-##Utility Functions 
-
-Call off `rsj` namespace once instantiated.
-```js
-if ( rjs.isSmall() ) {
-    // do something for small 
-}
-if ( rjs.isMedium() ) {
-    // do something for medium
-}
-if ( rjs.isLarge() ) {
-    // do something for large
-}
-```
-
 ## Initiate and Config Options
 
 
@@ -73,6 +58,21 @@ rsj.init( {
         prefix: "vp",
         debounceTime: 100
     } )
+```
+
+##Utility Functions 
+
+Call off `rsj` namespace once instantiated.
+```js
+if ( rjs.isSmall() ) {
+    // do something for small 
+}
+if ( rjs.isMedium() ) {
+    // do something for medium
+}
+if ( rjs.isLarge() ) {
+    // do something for large
+}
 ```
 
 _Requires_

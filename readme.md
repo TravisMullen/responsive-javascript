@@ -80,7 +80,7 @@ rsj.init( {
 
 ## Add Breakpoints
 
-Add viewport names to the config object on `init()`
+Add viewport names and new style rules to the config object on `init()`. Since `borderStyle` is already declared as the default style property we will expand on it by using `inset` and `ridge` values.
 ```js
 rsj.init( {
         breakpoints: {

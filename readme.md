@@ -20,7 +20,7 @@ $( window ) // listen to events on $(window)
 ```
 
 ###Resize Event
-To continuously listen for a `resize` event within a viewport use `viewport:*:resize`. This will be throttled by the [_.debounce](https://lodash.com/docs#debounce) specified in the config. 
+To continuously listen for a `resize` event within a viewport use `viewport:*:resize`. This will be throttled by the [_.debounce](https://lodash.com/docs#debounce) wait time specified in the config. 
 
 ```js
 $( window )
@@ -75,9 +75,9 @@ _Default config values_
     }
 ```
 
-Pass in number to change [_.debounce](https://lodash.com/docs#debounce) timeout
+Pass in number to change [_.debounce](https://lodash.com/docs#debounce) wait time 
 ```js
-    rjs.init( 100 );
+    rjs.init( 100 ); // in milliseconds
 ```
 
 Pass in object to change master config. Be sure to update [CSS](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) or [SCSS](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss) style rules accordingly. 

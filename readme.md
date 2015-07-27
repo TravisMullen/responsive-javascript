@@ -75,7 +75,7 @@ rsj.init( {
         },
         prefix: "vp",
         debounceTime: 100
-    } )
+    } );
 ```
 
 ## Add Breakpoints
@@ -87,7 +87,7 @@ rsj.init( {
             xlarge: "inset",
             xxlarge: "ridge"
         }
-    } )
+    } );
 ```
 
 Add new style rules to the [CSS](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) (or [SCSS](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss)) file.
@@ -116,11 +116,11 @@ $( window )
             // do something to the xxlarge viewport
         })
     .on('viewport:not:xxlarge', function() {
-            // do something to the small, medium and large, and xlarge viewports
+            // do something to the small, medium, large and xlarge viewports
         });
 ```
 
-_Requires_
+###Requires
 - jQuery (or similar library for selectors and `.trigger`), provided `.css` and `.js` for use.
 - [Lodash](https://lodash.com/docs#debounce) or [Underscore.js](http://underscorejs.org/#debounce)
 

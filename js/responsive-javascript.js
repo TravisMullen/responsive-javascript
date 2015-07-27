@@ -1,15 +1,6 @@
 "use strict";
 
-// ** requires 
-// https://lodash.com/
-// or
-// http://underscorejs.org/
-// and 
-// https://jquery.com/
-
 var rjs = {
-
-    version: "1.0.1",
 
     config: {
         name: "responsive-javascript",

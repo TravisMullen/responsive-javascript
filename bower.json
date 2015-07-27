@@ -1,0 +1,39 @@
+{
+  "name": "responsive-javascript",
+  "version": "0.9.0",
+  "homepage": "https://github.com/TravisMullen/responsive-javascript",
+  "authors": [
+    "Travis Mullen <travis@boombangmedia.com>"
+  ],
+  "description": "CSS driven JavaScript. Use responsive media queries to trigger JavaScript events. Utility functions also available.",
+  "main": [
+    "js/responsive-javascript.js",
+    "scss/responsive-javascript.scss"
+  ],
+  "dependencies": {
+    "jquery": "~2.1",
+    "lodash": "~2.4"
+  },
+  "moduleType": "globals",
+  "keywords": [
+    "rjs"
+    "responsive-design",
+    "responsive-javascript",
+    "window-detection-javascript",
+    "screen-size-javascript",
+    "css-powered-javascript",
+    "css-triggered-javascript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TravisMullen/responsive-javascript.git"
+  }
+}

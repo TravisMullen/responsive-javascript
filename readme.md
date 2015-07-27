@@ -96,7 +96,7 @@ Pass in object to change master config. Be sure to update [CSS](https://github.c
 
 ## Add Breakpoints
 
-Add viewport names and new style rules to the config object on `init()`. Since `borderStyle` is already declared as the default style property we will expand on it by using `inset` and `ridge` values.
+Add viewport names and new style rules to the config object on `init()`. Since `borderStyle` is already declared as the default style property the below example will expand on it by using `inset` and `ridge` values.
 ```js
     rsj.init( {
         breakpoints: {

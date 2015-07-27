@@ -1,7 +1,7 @@
 # Responsive Javascript.
 _CSS driven JavaScript._ Use responsive media queries to trigger JavaScript events. Utility functions also available.
 
-*Keep your JS and CSS in sync at all times!*
+**Keep your JS and CSS in sync at all times!**
 
 ## Responsive Events
 - A responsive event will be trigger once on page load and each time a viewport breakpoint has been crossed. 

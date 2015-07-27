@@ -53,6 +53,21 @@ if ( rjs.isLarge() ) {
 
 ## Initiation and Config Options
 
+Default config values 
+```js
+    {
+        name: "responsive-javascript", // class name
+        attribTarget: "borderStyle", // style property
+        breakpoints: { // style values of property to map
+            small: "dashed",
+            medium: "dotted",
+            large: "double"
+        },
+        prefix: "viewport", // prefix for trigger name
+        debounceTime: 30 // _.debounce timeout
+    }
+```
+
 Just call `init()` function and its ready to go!
 ```js
     rjs.init();
@@ -65,6 +80,7 @@ Pass in number to change [_.debounce](https://lodash.com/docs#debounce) timeout
 
 Pass in object to change master config. Be sure to update [CSS](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) or [SCSS](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss) style rules accordingly. 
 ```js
+    // example with custom config values
     rsj.init( {
         name: "my-custom-class-name",
         attribTarget: "borderColor",

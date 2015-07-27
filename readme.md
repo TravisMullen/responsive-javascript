@@ -65,7 +65,7 @@ Pass in number to change [_.debounce](https://lodash.com/docs#debounce) timeout
 
 Pass in object to change master config. Be sure to update [CSS](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) or [SCSS](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss) style rules accordingly. 
 ```js
-rsj.init( {
+    rsj.init( {
         name: "my-custom-class-name",
         attribTarget: "borderColor",
         breakpoints: {
@@ -82,7 +82,7 @@ rsj.init( {
 
 Add viewport names and new style rules to the config object on `init()`. Since `borderStyle` is already declared as the default style property we will expand on it by using `inset` and `ridge` values.
 ```js
-rsj.init( {
+    rsj.init( {
         breakpoints: {
             xlarge: "inset",
             xxlarge: "ridge"

@@ -71,7 +71,7 @@ _Default config values_
             large: "double"
         },
         prefix: "viewport", // prefix for trigger name
-        debounceTime: 30 // _.debounce timeout
+        debounceTime: 30 // _.debounce wait time in milliseconds
     }
 ```
 

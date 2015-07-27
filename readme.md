@@ -1,5 +1,5 @@
 # Responsive Javascript.
-## CSS driven JavaScript. Use responsive media queries to trigger JavaScript events. Utility functions also available.
+_CSS driven JavaScript._ Use responsive media queries to trigger JavaScript events. Utility functions also available.
 
 - Keep your JS and CSS in sync at all times.
 - Keep your breakpoint declarations out of your JS. Keep style rules in the style-sheet.

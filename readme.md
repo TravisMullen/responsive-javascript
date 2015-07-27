@@ -1,11 +1,12 @@
 # Responsive Javascript.
-_CSS driven JavaScript._ Use responsive media queries to trigger JavaScript events. Utility functions also available.
+_CSS driven JavaScript._ Use responsive media queries to trigger JavaScript events/promises. Utility functions also available.
 
 - Keep your JS and CSS in sync at all times.
 - Keep your breakpoint declarations out of your JS. Keep style rules in the style-sheet.
+
+## Promises
 - Selectively toggle JS functionality using omitted events `viewport:small`, `viewport:medium`, `viewport:large`, `viewport:xlarge`. 
 - Also has `viewport:not:*` events.
-
 
 ```js
 $( window ) // listen to events on $(window)
@@ -31,8 +32,24 @@ $( window )
 
 Use CSS or SCSS variables to set JS breakpoints. Set-up listeners to activate/deactivate JS modules, shiv JS styles, or whatever you need. JS and CSS always stay in sync.
 
-## Initiate and Config Options
 
+##Utility Functions 
+
+Call off `rsj` namespace once instantiated.
+```js
+if ( rjs.isSmall() ) {
+    // do something for small 
+}
+if ( rjs.isMedium() ) {
+    // do something for medium
+}
+if ( rjs.isLarge() ) {
+    // do something for large
+}
+```
+
+
+## Initiation and Config Options
 
 Just call `init()` function and its ready to go!
 ```js
@@ -57,21 +74,6 @@ rsj.init( {
         prefix: "vp",
         debounceTime: 100
     } )
-```
-
-##Utility Functions 
-
-Call off `rsj` namespace once instantiated.
-```js
-if ( rjs.isSmall() ) {
-    // do something for small 
-}
-if ( rjs.isMedium() ) {
-    // do something for medium
-}
-if ( rjs.isLarge() ) {
-    // do something for large
-}
 ```
 
 _Requires_

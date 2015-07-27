@@ -1,12 +1,14 @@
 # Responsive Javascript.
-_CSS driven JavaScript._ Use responsive media queries to trigger JavaScript events/promises. Utility functions also available.
+_CSS driven JavaScript._ Use responsive media queries to trigger JavaScript events. Utility functions also available.
 
 - Keep your JS and CSS in sync at all times.
 - Keep your breakpoint declarations out of your JS. Keep style rules in the style-sheet.
 
-## Promises
-- Selectively toggle JS functionality using omitted events `viewport:small`, `viewport:medium`, `viewport:large`, `viewport:xlarge`. 
+## Responsive Events
+- Responsive event will be triggered for the following viewport breakpoints `viewport:small`, `viewport:medium`, `viewport:large`, `viewport:xlarge`. 
+- Breakpoints are mapped to [CSS media queries](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) ([SCSS version availible](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss)) 
 - Also has `viewport:not:*` events.
+- A responsive event will be trigger once on page load and each time a viewport has triggered a style change via CSS media query. 
 
 ```js
 $( window ) // listen to events on $(window)
@@ -18,6 +20,7 @@ $( window ) // listen to events on $(window)
         });
 ```
 
+*Resize Event*
 To continuously listen for a `resize` event within a viewport use `viewport:*:resize`. This will be throttled by the [_.debounce](https://lodash.com/docs#debounce) specified in the config. 
 
 ```js
@@ -61,7 +64,7 @@ Pass in number to change [_.debounce](https://lodash.com/docs#debounce) timeout
     rjs.init( 100 );
 ```
 
-Pass in object to change master config. Be sure to update CSS targets accordingly. 
+Pass in object to change master config. Be sure to update [CSS class names](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) accordingly. 
 ```js
 rsj.init( {
         name: "my-custom-class-name",

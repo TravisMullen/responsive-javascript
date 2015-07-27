@@ -8,7 +8,7 @@ _CSS driven JavaScript._ Use responsive media queries to trigger JavaScript even
 - Responsive event will be triggered for the following viewport breakpoints `viewport:small`, `viewport:medium`, `viewport:large`, `viewport:xlarge`. 
 - Breakpoints are mapped to [CSS media queries](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) ([SCSS version available](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss)) 
 - Also has `viewport:not:*` events.
-- A responsive event will be trigger once on page load and each time a viewport has triggered a style change via CSS media query. 
+- A responsive event will be trigger once on page load and each time a viewport breakpoint has been crossed. 
 
 ```js
 $( window ) // listen to events on $(window)

@@ -6,7 +6,7 @@ _CSS driven JavaScript._ Use responsive media queries to trigger JavaScript even
 
 ## Responsive Events
 - Responsive event will be triggered for the following viewport breakpoints `viewport:small`, `viewport:medium`, `viewport:large`, `viewport:xlarge`. 
-- Breakpoints are mapped to [CSS media queries](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) ([SCSS version availible](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss)) 
+- Breakpoints are mapped to [CSS media queries](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) ([SCSS version available](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss)) 
 - Also has `viewport:not:*` events.
 - A responsive event will be trigger once on page load and each time a viewport has triggered a style change via CSS media query. 
 
@@ -64,7 +64,7 @@ Pass in number to change [_.debounce](https://lodash.com/docs#debounce) timeout
     rjs.init( 100 );
 ```
 
-Pass in object to change master config. Be sure to update [CSS class names](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) accordingly. 
+Pass in object to change master config. Be sure to update [CSS](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) or [SCSS](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss) style rules accordingly. 
 ```js
 rsj.init( {
         name: "my-custom-class-name",

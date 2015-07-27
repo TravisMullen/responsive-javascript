@@ -4,8 +4,8 @@ _CSS driven JavaScript._ Use responsive media queries to trigger JavaScript even
 **Keep your JS and CSS in sync!**
 
 ## Responsive Events
-- A responsive event will be trigger once on page load and each time a viewport breakpoint has been crossed. 
-- Responsive event will be triggered for the following viewport breakpoints `viewport:small`, `viewport:medium`, `viewport:large`, `viewport:xlarge`. 
+- A responsive event will be triggered once on page load and each time a viewport breakpoint has been crossed. 
+- Responsive events will be triggered for the following viewport breakpoints `viewport:small`, `viewport:medium`, `viewport:large`. 
 - Breakpoints are mapped to [CSS media queries](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) ([SCSS version available](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss)) 
 - Also has `viewport:not:*` events.
 
@@ -15,7 +15,7 @@ $( window ) // listen to events on $(window)
             // do something to the small viewport
         })
     .on('viewport:not:small', function() {
-            // do something to the medium and larger viewports
+            // do something to the medium and large viewports
         });
 ```
 
@@ -25,10 +25,10 @@ To continuously listen for a `resize` event within a viewport use `viewport:*:re
 ```js
 $( window )
     .on('viewport:small:resize', function() {
-            // do something on every resize event to the small viewport
+            // do something on every resize event in the small viewport
         })
     .on('viewport:not:small:resize', function() {
-            // do something on every resize event to the medium and larger viewports
+            // do something on every resize event within the medium and large viewports
         });
 ```
 
@@ -76,6 +76,48 @@ rsj.init( {
         prefix: "vp",
         debounceTime: 100
     } )
+```
+
+## Add Breakpoints
+
+Add viewport names to the config object on `init()`
+```js
+rsj.init( {
+        breakpoints: {
+            xlarge: "inset",
+            xxlarge: "ridge"
+        }
+    } )
+```
+
+Add new style rules to the [CSS](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) (or [SCSS](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss)) file.
+```css
+/* xlarge viewport */
+@media only screen and (min-width: 92em) {
+    .responsive-javascript {
+        border-style: inset;
+    }
+}
+/* xxlarge viewport */
+@media only screen and (min-width: 124em) {
+    .responsive-javascript {
+        border-style: ridge;
+    }
+}
+```
+
+Instantiate new triggers to target
+```js
+$( window )
+    .on('viewport:xlarge', function() {
+            // do something to the xlarge viewport
+        })
+    .on('viewport:xxlarge', function() {
+            // do something to the xxlarge viewport
+        })
+    .on('viewport:not:xxlarge', function() {
+            // do something to the small, medium and large, and xlarge viewports
+        });
 ```
 
 _Requires_

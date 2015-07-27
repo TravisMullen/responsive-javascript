@@ -37,7 +37,7 @@ Use CSS or SCSS variables to set JS breakpoints. Set-up listeners to activate/de
 
 ##Utility Functions 
 
-**Warning** Utility Functions will only work for default breakpoints `small`, `medium` and `large`. Custom breakpoints are not yet supported. 
+**Warning:** Utility Functions will only work for default breakpoints `small`, `medium` and `large`. Custom breakpoints are not yet supported. 
 
 Call off `rsj` namespace once instantiated.
 ```js

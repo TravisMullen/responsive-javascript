@@ -53,7 +53,12 @@ if ( rjs.isLarge() ) {
 
 ## Initiation and Config Options
 
-Default config values 
+
+Just call `init()` function and its ready to go!
+```js
+    rjs.init();
+```
+_Default config values_ 
 ```js
     {
         name: "responsive-javascript", // class name
@@ -66,11 +71,6 @@ Default config values
         prefix: "viewport", // prefix for trigger name
         debounceTime: 30 // _.debounce timeout
     }
-```
-
-Just call `init()` function and its ready to go!
-```js
-    rjs.init();
 ```
 
 Pass in number to change [_.debounce](https://lodash.com/docs#debounce) timeout

@@ -19,7 +19,7 @@ $( window ) // listen to events on $(window)
         });
 ```
 
-*Resize Event*
+###Resize Event
 To continuously listen for a `resize` event within a viewport use `viewport:*:resize`. This will be throttled by the [_.debounce](https://lodash.com/docs#debounce) specified in the config. 
 
 ```js

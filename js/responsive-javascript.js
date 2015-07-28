@@ -48,17 +48,19 @@
 
         },
         setConfig: function( config ) {
-            return {
-                name: config.name || this.config.name,
-                attribTarget: config.attribTarget || this.config.attribTarget,
-                breakpoints: {
-                    small: config.breakpoints && config.breakpoints.small || this.config.breakpoints.small,
-                    medium: config.breakpoints && config.breakpoints.medium || this.config.breakpoints.medium,
-                    large: config.breakpoints && config.breakpoints.large || this.config.breakpoints.large
-                },
-                prefix: config.prefix || this.config.prefix,
-                debounceTime: config.debounceTime || this.config.debounceTime
+            var tmp = _.clone(config);
+
+            tmp.name = config.name || this.config.name;
+            tmp.attribTarget = config.attribTarget || this.config.attribTarget;
+            if (config.breakpoints) {
+                tmp.breakpoints.small = config.breakpoints.small || this.config.breakpoints.small;
+                tmp.breakpoints.medium = config.breakpoints.medium || this.config.breakpoints.medium;
+                tmp.breakpoints.large = config.breakpoints.large || this.config.breakpoints.large;
             }
+            tmp.prefix = config.prefix || this.config.prefix;
+            tmp.debounceTime = config.debounceTime || this.config.debounceTime;
+                
+            return tmp;
         },
         findViewPort: function( viewport ) {
             var ports = this.config.breakpoints,

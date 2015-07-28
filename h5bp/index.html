@@ -77,7 +77,14 @@
         <script src="js/main.js"></script>
 
         <script>
-            rjs.init( );
+            rjs.init( {
+                name: "farts",
+                breakpoints: {
+                    small: "outset",
+                    xlarge: "inset",
+                    xxlarge: "ridge"
+                }
+            });
         </script>
 
     </body>

@@ -17,10 +17,11 @@
 
         $window: $( window ),
         viewport: undefined,
+        push: undefined,
+        target: undefined, 
 
         init: function( config ) {
-            var that = this,
-                push;
+            var that = this;
 
             if ( _.isObject( config ) ) {
                 this.config = this.setConfig( config );
@@ -31,23 +32,32 @@
             // this.elm = $("[" + this.config.name + "]"); // attach to attrib
             this.elm = $( 'body' ); // attach to body
 
+            if ( this.target ) {
+                this.elm.remove( this.target );
+            }
             this.target = $( '<div />' , {
                 'class': this.config.name,
                 'style': "display:none;"
             });
-
             this.elm.append( this.target );
+
+            
+            if ( this.push ) {
+                this.$window.off( 'resize' , this.push );
+            }
+            
+            // firing on every init cause the use should check against a double trigger
+            this.pushTriggers();
 
             // util lib
             this.buildUtility();
-
-            this.pushTriggers();
-
-            push = _.debounce( function() {
+            
+            
+            this.push = _.debounce( function() {
                 that.pushTriggers();
             }, this.config.debounceTime );
 
-            this.$window.on( 'resize' , push );
+            this.$window.on( 'resize' , this.push );
 
         },
         setConfig: function( config ) {
@@ -85,6 +95,15 @@
             }
             return exc;
         },
+        getBreakpointKeys: function( viewport ) {
+            var ports = this.config.breakpoints,
+                exc = [],
+                view;
+            for (view in ports) {
+                exc.push( view );
+            }
+            return exc;
+        },
         pushTriggers: function() {
             var value = this.target.css( this.config.attribTarget ),
                 vp = this.findViewPort( value ),
@@ -106,21 +125,32 @@
                 this.$window.trigger( this.config.prefix + ':not:' + excs[i] );
             };
         },
-        buildUtility: function() {
+        buildUtility: function( config ) {
             var ports = this.config.breakpoints,
-                help = {},
+                bps = this.getBreakpointKeys( ports ),
                 view,
-                name;
+                name,
+                i = 0;
+                console.log("bps",bps);
+            // if calling `buildUtility` then allow for new config 
+            // this would allow for you to change breakpoints and update util fns if needed
+            if ( _.isObject( config ) ) {
+                if ( !_.isObject( config.breakpoints ) ) {
+                    config.breakpoints = config;
+                }
+                this.init( config );
+            }
+            // add to namespace
             for (view in ports) {
                 name = 'is' + view.charAt(0).toUpperCase() + view.slice(1);
-                this[name] = help[name] = function() {
-                    return this.viewport === view;
+                this[name] = function() {
+                    var value = this.viewport === bps[ i ];
+                    i++;
+                    return value;
                 };
             }
-            return help;
         }
     };
 }( this ));
 
 // rjs.init(); // and go!
-

@@ -38,6 +38,9 @@
 
             this.elm.append( this.target );
 
+            // util lib
+            this.util = this.buildUtility();
+
             this.pushTriggers();
 
             push = _.debounce( function() {
@@ -59,7 +62,7 @@
             }
             tmp.prefix = config.prefix || this.config.prefix;
             tmp.debounceTime = config.debounceTime || this.config.debounceTime;
-                
+
             return tmp;
         },
         findViewPort: function( viewport ) {
@@ -111,6 +114,18 @@
         },
         isLarge: function() {
             return this.viewport === 'large';
+        },
+        buildUtility: function() {
+            var ports = this.config.breakpoints,
+                help = {},
+                view;
+            for (view in ports) {
+                var name = 'is' + view.charAt(0).toUpperCase() + view.slice(1);
+                help[name] = function() {
+                    return this.viewport === view;
+                };
+            }
+            return help;
         }
     };
 }( this ));

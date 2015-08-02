@@ -37,9 +37,7 @@ Use CSS or SCSS variables to set JS breakpoints. Set-up listeners to activate/de
 
 ##Utility Functions 
 
-**Warning:** Utility Functions will only work for default breakpoints `small`, `medium` and `large`. Custom breakpoints are not yet supported. 
-
-Call off `rsj` namespace once instantiated.
+Call off `rsj` namespace once instantiated. Functions are created based on key names defened in `config.breakpoints`.
 ```js
 if ( rjs.isSmall() ) {
     // do something for small 
@@ -136,6 +134,16 @@ $( window )
     .on('viewport:not:xxlarge', function() {
             // do something to the small, medium, large and xlarge viewports
         });
+```
+
+Dynamically Created Utility Functions 
+```js
+if ( rjs.isXlarge() ) {
+    // do something for xlarge
+}
+if ( rjs.isXxlarge() ) {
+    // do something for xxlarge
+}
 ```
 
 ###Requires

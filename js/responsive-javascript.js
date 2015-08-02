@@ -131,7 +131,6 @@
                 view,
                 name,
                 i = 0;
-                console.log("bps",bps);
             // if calling `buildUtility` then allow for new config 
             // this would allow for you to change breakpoints and update util fns if needed
             if ( _.isObject( config ) ) {

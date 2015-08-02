@@ -39,7 +39,7 @@
             this.elm.append( this.target );
 
             // util lib
-            this.util = this.buildUtility();
+            this.buildUtility();
 
             this.pushTriggers();
 
@@ -106,22 +106,13 @@
                 this.$window.trigger( this.config.prefix + ':not:' + excs[i] );
             };
         },
-        isSmall: function() {
-            return this.viewport === 'small';
-        },
-        isMedium: function() {
-            return this.viewport === 'medium';
-        },
-        isLarge: function() {
-            return this.viewport === 'large';
-        },
         buildUtility: function() {
             var ports = this.config.breakpoints,
                 help = {},
                 view;
             for (view in ports) {
                 var name = 'is' + view.charAt(0).toUpperCase() + view.slice(1);
-                help[name] = function() {
+                this[name] = help[name] = function() {
                     return this.viewport === view;
                 };
             }

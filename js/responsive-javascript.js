@@ -109,9 +109,10 @@
         buildUtility: function() {
             var ports = this.config.breakpoints,
                 help = {},
-                view;
+                view,
+                name;
             for (view in ports) {
-                var name = 'is' + view.charAt(0).toUpperCase() + view.slice(1);
+                name = 'is' + view.charAt(0).toUpperCase() + view.slice(1);
                 this[name] = help[name] = function() {
                     return this.viewport === view;
                 };

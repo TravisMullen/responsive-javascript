@@ -38,6 +38,8 @@ Use CSS or SCSS variables to set JS breakpoints. Set-up listeners to activate/de
 ##Utility Functions 
 
 Call off `rsj` namespace once instantiated. Functions are created based on key names defened in `config.breakpoints`.
+
+Check for "is current viewport" `isBreakpointname`
 ```js
 if ( rjs.isSmall() ) {
     // do something for small 
@@ -47,6 +49,33 @@ if ( rjs.isMedium() ) {
 }
 if ( rjs.isLarge() ) {
     // do something for large
+}
+```
+
+Check for "is current or larger viewport" `isBreakpointnameUp`
+```js
+if ( rjs.isSmallUp() ) {
+    // do something for small, medium, and large
+}
+if ( rjs.isMediumUp() ) {
+    // do something for medium, and large
+}
+if ( rjs.isLargeUp() ) {
+    // do something for large
+}
+
+```
+
+Check for "is current or smaller viewport" `isBreakpointname`
+```js
+if ( rjs.isSmallDown() ) {
+    // do something for small 
+}
+if ( rjs.isMediumDown() ) {
+    // do something for small and medium
+}
+if ( rjs.isLargeDown() ) {
+    // do something for small, medium and large
 }
 ```
 

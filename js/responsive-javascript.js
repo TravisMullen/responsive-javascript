@@ -2,7 +2,54 @@
 
 (function ( global ){
 
-    // to do : make private functions
+    function setConfig( config, inst ) {
+        var tmp = _.clone(config);
+
+        tmp.name = config.name || inst.config.name;
+        tmp.attribTarget = config.attribTarget || inst.config.attribTarget;
+        if (config.breakpoints) {
+            tmp.breakpoints.small = config.breakpoints.small || inst.config.breakpoints.small;
+            tmp.breakpoints.medium = config.breakpoints.medium || inst.config.breakpoints.medium;
+            tmp.breakpoints.large = config.breakpoints.large || inst.config.breakpoints.large;
+        }
+        tmp.prefix = config.prefix || inst.config.prefix;
+        tmp.debounceTime = config.debounceTime || inst.config.debounceTime;
+
+        return tmp;
+    }
+
+    function findViewPort( viewport, inst ) {
+        var ports = inst.config.breakpoints,
+            view;
+        for (view in ports) {
+            if (viewport === ports[view]) {
+                return view;
+            } 
+        }
+        return false;
+    };
+
+    function findViewExclusions( viewport, inst ) {
+        var ports = inst.config.breakpoints,
+            exc = [],
+            view;
+        for (view in ports) {
+            if (viewport !== ports[view]) {
+                exc.push( view );
+            }
+        }
+        return exc;
+    };
+
+    function getBreakpointKeys( viewport, inst ) {
+        var ports = inst.config.breakpoints,
+            exc = [],
+            view;
+        for (view in ports) {
+            exc.push( view );
+        }
+        return exc;
+    };
 
     function buildPortCompare( inst, view ) {
         return function() {
@@ -10,17 +57,17 @@
         };
     }
 
-    function buildPortCompareGreater( inst, ports, view, i ) {
+    function buildPortCompareGreater( inst, ports, view, index ) {
         return function() {
-            var filteredPorts = ports.slice( i, ports.length );
-            return filteredPorts.indexOf( inst.viewport ) <= 0;
+            var filteredPorts = ports.slice( index, ports.length );
+            return filteredPorts.indexOf( inst.viewport ) >= 0;
         };
     }
 
-    function buildPortCompareLesser( inst, ports, view, i ) {
+    function buildPortCompareLesser( inst, ports, view, index ) {
         return function() {
-            var filteredPorts = ports.slice( i, ports.length );
-            return filteredPorts.indexOf( inst.viewport ) >= 0;
+            var filteredPorts = ports.slice( index, ports.length );
+            return filteredPorts.indexOf( inst.viewport ) <= 0;
         };
     }
 
@@ -47,7 +94,7 @@
             var that = this;
 
             if ( _.isObject( config ) ) {
-                this.config = this.setConfig( config );
+                this.config = setConfig( config, this );
             } else if ( _.isNumber( config ) ) {
                 this.config.debounceTime = config;
             }
@@ -81,54 +128,10 @@
             this.$window.on( 'resize' , this.push );
 
         },
-        setConfig: function( config ) {
-            var tmp = _.clone(config);
-
-            tmp.name = config.name || this.config.name;
-            tmp.attribTarget = config.attribTarget || this.config.attribTarget;
-            if (config.breakpoints) {
-                tmp.breakpoints.small = config.breakpoints.small || this.config.breakpoints.small;
-                tmp.breakpoints.medium = config.breakpoints.medium || this.config.breakpoints.medium;
-                tmp.breakpoints.large = config.breakpoints.large || this.config.breakpoints.large;
-            }
-            tmp.prefix = config.prefix || this.config.prefix;
-            tmp.debounceTime = config.debounceTime || this.config.debounceTime;
-
-            return tmp;
-        },
-        findViewPort: function( viewport ) {
-            var ports = this.config.breakpoints,
-                view;
-            for (view in ports) {
-                if (viewport === ports[view]) {
-                    return view;
-                }
-            }
-        },
-        findViewExclusions: function( viewport ) {
-            var ports = this.config.breakpoints,
-                exc = [],
-                view;
-            for (view in ports) {
-                if (viewport !== ports[view]) {
-                    exc.push( view );
-                }
-            }
-            return exc;
-        },
-        getBreakpointKeys: function( viewport ) {
-            var ports = this.config.breakpoints,
-                exc = [],
-                view;
-            for (view in ports) {
-                exc.push( view );
-            }
-            return exc;
-        },
         pushTriggers: function() {
             var value = this.target.css( this.config.attribTarget ),
-                vp = this.findViewPort( value ),
-                excs = this.findViewExclusions( value );
+                vp = findViewPort( value, this ),
+                excs = findViewExclusions( value, this );
 
             // for angularjs use `scope.$emit`
             this.$window.trigger( this.config.prefix + ':' + vp + ':resize' );
@@ -149,10 +152,10 @@
         },
         buildUtility: function( config ) {
             var ports = this.config.breakpoints,
-                bps = this.getBreakpointKeys( ports ),
+                bps = getBreakpointKeys( ports, this ),
                 view,
                 name,
-                i = 0;
+                index = 0;
 
             // if calling `buildUtility` then allow for new config 
             // this would allow for you to change breakpoints and update util fns if needed
@@ -164,19 +167,20 @@
             }
             // add fns to namespace
             for (view in ports) {
+
                 // format fn names `isKeyname` of config.breakpoints
                 name = 'is' + view.charAt(0).toUpperCase() + view.slice(1);
+
+                // `isKeyname fns
                 this[ name ] = buildPortCompare( this, view );
 
                 // `isKeynameUp fns
-                name = 'is' + view.charAt(0).toUpperCase() + view.slice(1) + 'Up';
-                this[ name ] = buildPortCompareGreater( this, bps, view, i );
+                this[ name + 'Up' ] = buildPortCompareGreater( this, bps, view, index );
 
                 // `isKeynameDown fns
-                name = 'is' + view.charAt(0).toUpperCase() + view.slice(1) + 'Down';
-                this[ name ] = buildPortCompareLesser( this, bps, view, i );
+                this[ name + 'Down' ] = buildPortCompareLesser( this, bps, view, index );
 
-                i++;
+                index++;
             }
         }
     };

@@ -33,7 +33,7 @@
             this.elm = $( 'body' ); // attach to body
 
             if ( this.target ) {
-                this.elm.remove( this.target );
+                this.target.remove();
             }
             this.target = $( '<div />' , {
                 'class': this.config.name,
@@ -139,10 +139,11 @@
                 }
                 this.init( config );
             }
-            // add to namespace
+            // add fns to namespace
             for (view in ports) {
+                // format fn names `isKeyname` of config.breakpoints
                 name = 'is' + view.charAt(0).toUpperCase() + view.slice(1);
-                this[name] = function() {
+                this[ name ] = function() {
                     var value = this.viewport === bps[ i ];
                     i++;
                     return value;

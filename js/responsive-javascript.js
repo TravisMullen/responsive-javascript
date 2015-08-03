@@ -1,6 +1,29 @@
 "use strict";
 
 (function ( global ){
+
+    // to do : make private functions
+
+    function buildPortCompare( inst, view ) {
+        return function() {
+            return inst.viewport === view;
+        };
+    }
+
+    function buildPortCompareGreater( inst, ports, view, i ) {
+        return function() {
+            var filteredPorts = ports.slice( i, ports.length );
+            return filteredPorts.indexOf( inst.viewport ) <= 0;
+        };
+    }
+
+    function buildPortCompareLesser( inst, ports, view, i ) {
+        return function() {
+            var filteredPorts = ports.slice( i, ports.length );
+            return filteredPorts.indexOf( inst.viewport ) >= 0;
+        };
+    }
+
     global.rjs = {
 
         config: {
@@ -29,8 +52,7 @@
                 this.config.debounceTime = config;
             }
 
-            // this.elm = $("[" + this.config.name + "]"); // attach to attrib
-            this.elm = $( 'body' ); // attach to body
+            this.elm = $( 'body' );
 
             if ( this.target ) {
                 this.target.remove();
@@ -46,7 +68,6 @@
                 this.$window.off( 'resize' , this.push );
             }
             
-            // firing on every init cause the use should check against a double trigger
             this.pushTriggers();
 
             // util lib
@@ -116,6 +137,7 @@
             };
 
             // if viewport has changed fire trigger
+            // protects against refire if init() is called repetitively 
             if ( this.viewport === vp ) {
                 return;
             }
@@ -131,6 +153,7 @@
                 view,
                 name,
                 i = 0;
+
             // if calling `buildUtility` then allow for new config 
             // this would allow for you to change breakpoints and update util fns if needed
             if ( _.isObject( config ) ) {
@@ -143,11 +166,17 @@
             for (view in ports) {
                 // format fn names `isKeyname` of config.breakpoints
                 name = 'is' + view.charAt(0).toUpperCase() + view.slice(1);
-                this[ name ] = function() {
-                    var value = this.viewport === bps[ i ];
-                    i++;
-                    return value;
-                };
+                this[ name ] = buildPortCompare( this, view );
+
+                // `isKeynameUp fns
+                name = 'is' + view.charAt(0).toUpperCase() + view.slice(1) + 'Up';
+                this[ name ] = buildPortCompareGreater( this, bps, view, i );
+
+                // `isKeynameDown fns
+                name = 'is' + view.charAt(0).toUpperCase() + view.slice(1) + 'Down';
+                this[ name ] = buildPortCompareLesser( this, bps, view, i );
+
+                i++;
             }
         }
     };

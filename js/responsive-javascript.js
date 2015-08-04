@@ -7,11 +7,7 @@
 
         tmp.name = config.name || inst.config.name;
         tmp.attribTarget = config.attribTarget || inst.config.attribTarget;
-        if (config.breakpoints) {
-            tmp.breakpoints.small = config.breakpoints.small || inst.config.breakpoints.small;
-            tmp.breakpoints.medium = config.breakpoints.medium || inst.config.breakpoints.medium;
-            tmp.breakpoints.large = config.breakpoints.large || inst.config.breakpoints.large;
-        }
+        tmp.breakpoints = config.breakpoints || inst.config.breakpoints;
         tmp.prefix = config.prefix || inst.config.prefix;
         tmp.debounceTime = config.debounceTime || inst.config.debounceTime;
 
@@ -51,20 +47,20 @@
         return exc;
     };
 
-    function buildPortCompare( inst, view ) {
+    function buildPortCompare( view, inst ) {
         return function() {
             return inst.viewport === view;
         };
     }
 
-    function buildPortCompareGreater( inst, ports, view, index ) {
+    function buildPortCompareGreater( ports, view, index, inst ) {
         return function() {
             var filteredPorts = ports.slice( index, ports.length );
             return filteredPorts.indexOf( inst.viewport ) >= 0;
         };
     }
 
-    function buildPortCompareLesser( inst, ports, view, index ) {
+    function buildPortCompareLesser( ports, view, index, inst ) {
         return function() {
             var filteredPorts = ports.slice( index, ports.length );
             return filteredPorts.indexOf( inst.viewport ) <= 0;
@@ -98,6 +94,8 @@
             } else if ( _.isNumber( config ) ) {
                 this.config.debounceTime = config;
             }
+
+            console.log("this.config.breakpoints",this.config.breakpoints);
 
             this.elm = $( 'body' );
 
@@ -172,13 +170,13 @@
                 name = 'is' + view.charAt(0).toUpperCase() + view.slice(1);
 
                 // `isKeyname fns
-                this[ name ] = buildPortCompare( this, view );
+                this[ name ] = buildPortCompare( view, this );
 
                 // `isKeynameUp fns
-                this[ name + 'Up' ] = buildPortCompareGreater( this, bps, view, index );
+                this[ name + 'Up' ] = buildPortCompareGreater( bps, view, index, this );
 
                 // `isKeynameDown fns
-                this[ name + 'Down' ] = buildPortCompareLesser( this, bps, view, index );
+                this[ name + 'Down' ] = buildPortCompareLesser( bps, view, index, this );
 
                 index++;
             }

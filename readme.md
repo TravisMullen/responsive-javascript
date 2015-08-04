@@ -66,7 +66,7 @@ if ( rjs.isLargeUp() ) {
 
 ```
 
-Check for "is current or smaller viewport" `isBreakpointname`
+Check for "is current or smaller viewport" `isBreakpointnameDown`
 ```js
 if ( rjs.isSmallDown() ) {
     // do something for small 
@@ -92,7 +92,7 @@ _Default config values_
     {
         name: "responsive-javascript", // class name
         attribTarget: "borderStyle", // style property
-        breakpoints: { // style values of property to map
+        breakpoints: { // style values of property to map / ordered smallest to largest
             small: "dashed",
             medium: "dotted",
             large: "double"
@@ -110,10 +110,11 @@ Pass in number to change [_.debounce](https://lodash.com/docs#debounce) wait tim
 Pass in object to change master config. Be sure to update [CSS](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) or [SCSS](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss) style rules accordingly. 
 ```js
     // example with custom config values
+    // maintain order of breakpoints smallest to largest
     rsj.init( {
         name: "my-custom-class-name",
         attribTarget: "borderColor",
-        breakpoints: {
+        breakpoints: { 
             small: "red",
             medium: "green",
             large: "purple"
@@ -125,10 +126,16 @@ Pass in object to change master config. Be sure to update [CSS](https://github.c
 
 ## Add Breakpoints
 
+see [demo/custom-config.html](https://github.com/TravisMullen/responsive-javascript/tree/master/demo/custom-config.html)
+
 Add viewport names and new style rules to the config object on `init()`. Since `borderStyle` is already declared as the default style property the below example will expand on it by using `inset` and `ridge` values.
 ```js
+// maintain order of breakpoints smallest to largest
     rsj.init( {
         breakpoints: {
+            small: "dashed",
+            medium: "dotted",
+            large: "double",
             xlarge: "inset",
             xxlarge: "ridge"
         }
@@ -137,6 +144,8 @@ Add viewport names and new style rules to the config object on `init()`. Since `
 
 Add new style rules to the [CSS](https://github.com/TravisMullen/responsive-javascript/blob/master/css/responsive-javascript.css) (or [SCSS](https://github.com/TravisMullen/responsive-javascript/blob/master/scss/responsive-javascript.scss)) file.
 ```css
+/* in addition to existing styles */
+
 /* xlarge viewport */
 @media only screen and (min-width: 92em) {
     .responsive-javascript {
@@ -171,6 +180,18 @@ if ( rjs.isXlarge() ) {
     // do something for xlarge
 }
 if ( rjs.isXxlarge() ) {
+    // do something for xxlarge
+}
+if ( rjs.isXlargeUp() ) {
+    // do something for xlarge
+}
+if ( rjs.isXxlargeUp() ) {
+    // do something for xxlarge
+}
+if ( rjs.isXlargeDown() ) {
+    // do something for xlarge
+}
+if ( rjs.isXxlargeDown() ) {
     // do something for xxlarge
 }
 ```

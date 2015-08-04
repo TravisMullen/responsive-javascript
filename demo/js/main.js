@@ -25,14 +25,6 @@ $( window )
                 .text('large')
                 .css('border','1px solid green');
         })
-    // .on(
-    //  'viewport:xlarge',
-    //  function() {
-    //      console.log( 'viewport:xlarge' );
-    //      $('h2')
-    //          .text('extra-large')
-    //          .css('border','1px solid yellow');
-    //  })
     .on(
         'viewport:not:small',
         function() {

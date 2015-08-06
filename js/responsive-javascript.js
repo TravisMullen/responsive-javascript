@@ -95,8 +95,6 @@
                 this.config.debounceTime = config;
             }
 
-            console.log("this.config.breakpoints",this.config.breakpoints);
-
             this.elm = $( 'body' );
 
             if ( this.target ) {

@@ -160,6 +160,7 @@
                     config.breakpoints = config;
                 }
                 this.init( config );
+                return;
             }
             // add fns to namespace
             for (view in ports) {

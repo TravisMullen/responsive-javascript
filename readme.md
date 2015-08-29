@@ -37,7 +37,7 @@ Use CSS or SCSS variables to set JS breakpoints. Set-up listeners to activate/de
 
 ##Utility Functions 
 
-Call off `rsj` namespace once instantiated. Functions are created based on key names defened in `config.breakpoints`.
+Call off `rjs` namespace once instantiated. Functions are created based on key names defened in `config.breakpoints`.
 
 Check for "is current viewport" `isBreakpointname`
 ```js
@@ -111,7 +111,7 @@ Pass in object to change master config. Be sure to update [CSS](https://github.c
 ```js
     // example with custom config values
     // maintain order of breakpoints smallest to largest
-    rsj.init( {
+    rjs.init( {
         name: "my-custom-class-name",
         attribTarget: "borderColor",
         breakpoints: { 
@@ -131,7 +131,7 @@ see [demo/custom-config.html](https://github.com/TravisMullen/responsive-javascr
 Add viewport names and new style rules to the config object on `init()`. Since `borderStyle` is already declared as the default style property the below example will expand on it by using `inset` and `ridge` values.
 ```js
 // maintain order of breakpoints smallest to largest
-    rsj.init( {
+    rjs.init( {
         breakpoints: {
             small: "dashed",
             medium: "dotted",

@@ -1,10 +1,12 @@
 // ==================================================
 // breakpoints for `responsive-javascript.js`
+// to be copied to local
 // ==================================================
 
-$small: 40em;
-$medium: 64em;
-$large: 90em;
+$screen: "only screen" !default;
+$small: 40em !default;
+$medium: 64em !default;
+$large: 90em !default;
 
 $small-up: "only screen";
 
